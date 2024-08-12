@@ -1,0 +1,117 @@
+<form [formGroup]="studentForm">
+    <h4>Student Registration Form</h4>
+
+    <div class="field">
+        <p>First Name : </p>
+        <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="Ex. name" value="" formControlName="firstName">            
+        </mat-form-field>
+    </div>
+    <div class="validate-field" *ngIf="(studentForm.controls.firstName.dirty || studentForm.controls.firstName.touched) && studentForm.controls.firstName.invalid && studentForm.controls.firstName.errors">
+        Please enter Correct FirstName
+    </div>
+
+    <div class="field">
+        <p>Last Name : </p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Ex. name" value="" formControlName="lastName">
+        </mat-form-field>
+    </div>
+    <div class="validate-field" *ngIf="(studentForm.controls.lastName.dirty || studentForm.controls.lastName.touched) && studentForm.controls.lastName.invalid && studentForm.controls.lastName.errors">
+        Please enter Correct LastName
+    </div>
+
+    <div class="field">
+        <p>Email : </p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex. mail@gmail.com" value="">
+        </mat-form-field>
+    </div>
+
+    <div class="field">
+        <p>DateOfBirth : </p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    
+    <div class="field">
+        <p>Secondary Education : </p>
+        <mat-button-toggle-group  [(value)]="secondaryEdu">
+            <mat-button-toggle value="Intermediate">Intermediate</mat-button-toggle>
+            <mat-button-toggle value="Diploma">Diploma</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <div class="field">
+        <p>College Name : </p>
+        <mat-form-field class="example-full-width">
+            <mat-label>College Name</mat-label>
+            <mat-select>
+                @for (college of campus; track college) {
+                <mat-option [value]="college.value">{{college.viewValue}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="field">
+        <p>Do you have any Certifications:</p>
+        <div class="expand example-full-width">
+            <div>
+                <section class="Validation">
+                    <mat-checkbox [checked]="hasCertification" (change)="onCheckboxTrue()">Yes</mat-checkbox>
+                    <mat-checkbox [checked]="!hasCertification" (change)="onCheckboxFalse()">No</mat-checkbox>
+                </section>
+            </div>
+            <div>
+                <mat-accordion>
+                    <mat-expansion-panel [(expanded)]="hasCertification">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Certifications </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Check below certifications if you have otherwise check on other</p>
+                        <section class="Validation">
+                            <mat-checkbox>Azure</mat-checkbox>
+                            <mat-checkbox>AWS</mat-checkbox>
+                            <mat-checkbox>RedHat</mat-checkbox>
+                            <mat-checkbox>C++</mat-checkbox>
+                            <mat-checkbox>C#</mat-checkbox>
+                            <mat-checkbox>FullStack</mat-checkbox>
+                        </section>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <p>B.Tech Percentage : </p>
+        <div class="progress">
+            <mat-form-field class="example-full-width">
+                <mat-label>B.Tech Percentage</mat-label>
+                <input matInput placeholder="Ex. 70" value="" [(ngModel)]="btechPercentage" name="Percentage">
+            </mat-form-field>
+            <mat-progress-bar mode="determinate" value={{btechPercentage}}></mat-progress-bar>
+        </div>
+    </div>    
+</form>
+
+<div class="display-end">
+    <section>
+        <div class="submit-data">
+          <button mat-raised-button>Cancel</button>
+          <button mat-raised-button (click)="show()">Check Details</button>
+          <button mat-raised-button>Save</button>
+        </div>
+      </section>
+</div>
+

@@ -1,0 +1,55 @@
+form {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; 
+}
+
+.field {
+    display: flex;
+    align-items: center; 
+    gap: 1rem; 
+}
+
+p {
+    font-size: 1rem;
+    min-width: 15rem
+}
+
+.example-full-width {
+    flex: 1; 
+    max-width: 20rem; 
+}
+
+mat-button-toggle-group {
+    display: flex; 
+    gap: 1rem; 
+}
+
+.expand{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.progress{
+    display: flex;
+    flex-direction: column;
+}
+
+.display-end{
+    padding: 2rem;
+}
+
+.submit-data{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+}
+
+.validate-field{
+    color: red;
+    font-size: 1rem;
+}
